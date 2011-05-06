@@ -59,7 +59,7 @@
 		alert(element.innerHTML);
 	});
 
-*//
+*/
 
 function comb(selector, fn){
 	// Recursive function which will process the selection on an element

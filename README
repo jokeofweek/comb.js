@@ -16,6 +16,14 @@
  '*' - This will match all children nodes of the previously matched elements.
  
  Examples :
+ - To find the element with the ID 'right', you would do:
+	comb('#right');
+ 
+ - To find all elements with the class 'large', you would do:
+	comb('.large');
+	
+ - To find all div elements, you would do:
+	comb('div')
  
  - To find all paragraph elements within a div with ID 'blueSquare', you would do:
     comb('#blueSquare>p')

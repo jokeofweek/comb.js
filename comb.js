@@ -59,6 +59,13 @@
 		alert(element.innerHTML);
 	});
 
+ Note that, as the comb function returns a list of the elements, you can cache
+ the returned elements for future access
+
+ Examples:
+
+ - To cache all divs for future access:
+	var divs = comb('div');
 */
 
 function comb(selector, fn){
@@ -73,6 +80,7 @@ function comb(selector, fn){
 			temp = tokens[0].split('|');
 			tokens.shift();
 			for (var i = 0; i < temp.length; i++) elements = elements.concat(innerComb(element, [temp[i]].concat(tokens)));
+			
 			return elements;
 		}
 		
@@ -99,11 +107,12 @@ function comb(selector, fn){
 		
 		// If we still have tokens left, loop through every element
 		// and recurse through the comb function
-		if (tokens.length !== 1){
+		if (tokens.length > 1){
 			tokens.shift();
 			total = elements.length;
 			while (total-- > 0)
-				elements = elements.concat(innerComb(elements.shift(), tokens))
+				// Must use slice to clone the array and pass it 'by value'
+				elements = elements.concat(innerComb(elements.shift(), tokens.slice(0))) 
 		}
 		
 		return elements;

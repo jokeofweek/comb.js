@@ -66,6 +66,17 @@
 
  - To cache all divs for future access:
 	var divs = comb('div');
+	
+ You may also pass an array of selector strings to the function in order to
+ select more than one group of elements which cannot be picked through the
+ OR operator.
+ 
+ Examples:
+ 
+ - To select all selements which are either images inside divs or have class ".red",
+   you would do:
+   
+    comb(['div>img', '.red'])
 */
 
 function comb(selector, fn){
@@ -118,7 +129,13 @@ function comb(selector, fn){
 		return elements;
 	}
 
-	var elements = innerComb(document, selector.split('>'));
+	// Check if an array of selectors was passed, or a single selector
+	var elements = [];
+	if (typeof selector == 'string')
+		elements = innerComb(document, selector.split('>'));
+	else if (selector instanceof Array)
+		for (var i = 0; i < selector.length; i++)
+			elements = elements.concat(innerComb(document, selector[i].split('>')));
 
 	// Apply the function if there is any to each element, passing the element as an argument
 	if (fn)

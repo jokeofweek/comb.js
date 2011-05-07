@@ -64,3 +64,14 @@
 
  - To cache all divs for future access:
 	var divs = comb('div');
+
+ You may also pass an array of selector strings to the function in order to
+ select more than one group of elements which cannot be picked through the
+ OR operator.
+ 
+ Examples:
+ 
+ - To select all selements which are either images inside divs or have class ".red",
+   you would do:
+   
+    comb(['div>img', '.red'])

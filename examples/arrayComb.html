@@ -1,0 +1,50 @@
+<HTML>
+	<HEAD>
+		<TITLE>Comb.js - Array Combing Example</TITLE>
+		<STYLE type="text/css">
+			.blue {
+				font-color: blue;
+				fonr-size: small;
+			}
+		</STYLE>
+		<SCRIPT src="../comb.js" type="text/javascript"></SCRIPT>
+		<SCRIPT type="text/javascript">
+			function changeColor(element){
+				element.style.backgroundColor = 'GoldenRod';
+			}
+		
+			window.onload = function(){
+				comb('#changeParagraphs', function(element){
+					element.onclick = function(){
+						// This is an example of passing an array to Comb
+						comb(['div>p','#outerParagraph','.blue'],
+							 changeColor);
+					}
+				});
+			}
+		</SCRIPT>
+	</HEAD>
+	<BODY>
+		<DIV id="content" style="border:1px solid blue;">
+			<P>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac urna sit amet risus consequat pulvinar. Proin facilisis neque lorem, non volutpat quam. In hac habitasse platea dictumst. Sed tincidunt tincidunt diam et facilisis. Quisque tempor odio eu erat consequat eleifend. Sed sit amet dui ligula. Sed vitae placerat lacus. Cras porttitor urna gravida ligula eleifend iaculis. Sed ut scelerisque lorem. Ut aliquet, lectus sit amet egestas tempus, felis diam eleifend dui, non dictum enim odio nec mauris. Quisque in dolor porta massa convallis scelerisque. Vivamus fringilla ultricies interdum. Nulla porttitor posuere tortor, et hendrerit libero aliquam id. Donec vitae nulla a urna commodo interdum id eget massa. Pellentesque non eros non velit dapibus mattis. Fusce ac tortor sed lorem feugiat tincidunt vel id libero.
+			</P>
+			
+			<P>
+			Pellentesque facilisis quam id nunc gravida ullamcorper. Aliquam rhoncus quam id lectus dignissim vel faucibus urna tincidunt. Phasellus dictum est ut elit scelerisque sagittis. Phasellus sit amet venenatis quam. Vestibulum sollicitudin lorem sed quam congue id pellentesque erat blandit. Curabitur commodo blandit erat quis sollicitudin. Cras vulputate nisl ac tellus ultricies ac luctus est venenatis. In quis est in arcu pretium blandit at eu mauris. Proin dictum lectus eget lorem dictum sit amet mollis nisl aliquam. Nam mi leo, rhoncus id commodo pharetra, facilisis non magna. Cras non felis sed erat dictum gravida in non urna.
+			</P>
+			
+			<P>
+			Ut ac est aliquet metus posuere aliquet euismod non libero. Integer enim nisl, pellentesque id vestibulum nec, varius eu nulla. Praesent risus ipsum, dapibus at mollis bibendum, egestas sit amet nisl. Pellentesque ornare est nec orci pharetra suscipit. Suspendisse scelerisque faucibus felis non rhoncus. Sed pretium turpis vitae neque posuere nec viverra sapien iaculis. Vestibulum eget ante ut lacus vulputate fermentum. Curabitur dictum, risus semper malesuada luctus, enim metus sagittis urna, sit amet hendrerit velit dolor tincidunt urna. Sed commodo, arcu sed tincidunt porttitor, erat orci varius ipsum, ut fringilla mi tortor nec massa. Integer tincidunt nisl at augue eleifend sit amet mollis leo pharetra. In posuere ipsum non felis tincidunt ullamcorper. In iaculis turpis in tellus faucibus non facilisis odio mattis.
+			</P>
+		</DIV>
+		
+		<P id="outerParagraph"><b>This is an outer paragraph which is not in the div.</b></P>
+		
+		<P class="blue">This is a paragraph with the class 'blue'.</P>
+		
+		<P>This paragraph will not be selected as no selector leads to it.</P>
+		
+		<A id="changeParagraphs" href="#">Change the paragraph color</A>
+	</BODY>
+</HTML>

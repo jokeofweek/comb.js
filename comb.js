@@ -79,6 +79,13 @@
     comb(['div>img', '.red'])
 */
 
+// Extend the trim functionality of strings if the browser is IE
+if (!String.prototype.trim){
+	String.prototype.trim = function(){
+		return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+	}
+}
+
 function comb(selector, fn){
 	// Recursive function which will process the selection on an element
 	function innerComb(element, tokens){

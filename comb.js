@@ -2,81 +2,26 @@
  Comb.js 
  Created by: Dominic Charley-Roy
  ========================
- 
- Comb.js is an incredibly simple DOM traversal utility which allows you to
- query the DOM for elements matching a given selector. The comb function 
- returns an array of all the elements matching the passed selector. 
- 
- Building a selector is simple. Selector rules are separated by the '>' character.
- 
- Comb allows you to find elements matching the following rules:
- 
- '#elementId' - This will search for an element matching the ID 'elementId'
- '.elementClass' - This will search for all elements with the 'elementClass' class
- 'tag' - This will search for all elements with the 'tag' tag, such as 'p' or 'div'
- '*' - This will match all children nodes of the previously matched elements.
- 
- Examples :
- - To find the element with the ID 'right', you would do:
-	comb('#right');
- 
- - To find all elements with the class 'large', you would do:
-	comb('.large');
 	
- - To find all div elements, you would do:
-	comb('div')
- 
- - To find all paragraph elements within a div with ID 'blueSquare', you would do:
-    comb('#blueSquare>p')
-	
- - To find all elements with class 'red' which are in a DIV, you would do:
-	comb('div>.red')
-	
- - To find all the children elements of an element with ID 'header', you would do:
-	comb('#header>*');
-	
- You may also apply an OR rule using the '|' token. 
- 
- Examples :
- 
- - To find all img elements within a div with either ID 'left' or ID 'right', you would do:
-	comb('#left|#right>div')
-	
- - To find all elements which either have a H1 or H2 tag, you would do:
-	comb('h1|h2')
-	
- You can
- also pass a function to be applied to all elements found by the comb function.
- 
- If a function is passed, comb will call it and pass the element as a parameter.
- It essentially traverses the array of elements and calls the function on each
- element.
+ Copyright (C) 2011 by Dominic Charley-Roy
 
- Examples:
- 
- - To alert the inner HTML of all elements with class 'red', you would do:
-	comb('.red', function(element){
-		alert(element.innerHTML);
-	});
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
 
- Note that, as the comb function returns a list of the elements, you can cache
- the returned elements for future access
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
 
- Examples:
-
- - To cache all divs for future access:
-	var divs = comb('div');
-	
- You may also pass an array of selector strings to the function in order to
- select more than one group of elements which cannot be picked through the
- OR operator.
- 
- Examples:
- 
- - To select all selements which are either images inside divs or have class ".red",
-   you would do:
-   
-    comb(['div>img', '.red'])
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
 */
 
 // Extend the trim functionality of strings if the browser is IE

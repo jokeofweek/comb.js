@@ -42,7 +42,7 @@ function comb(selector, fn){
 		if (tokens[0].indexOf('|') !== -1){
 			temp = tokens[0].split('|');
 			tokens.shift();
-			for (var i = 0; i < temp.length; i++) elements = elements.concat(innerComb(element, [temp[i]].concat(tokens)));
+			for (var i = 0, _len = temp.length ; i < _len; i++) elements = elements.concat(innerComb(element, [temp[i]].concat(tokens)));
 			
 			return elements;
 		}
@@ -56,16 +56,16 @@ function comb(selector, fn){
 			// Class Selector
 			case '.':
 				temp = element.getElementsByClassName(tokens[0].substr(1));
-				for (var i = 0; i < temp.length; i++) elements.push(temp.item(i));
+				for (var i = temp.length; i--;) elements.push(temp.item(i));
 				break;
 			// Recursive Selector
 			case '*':
-				for (var i = 0; i < element.childNodes.length ; i++) elements.push(element.childNodes[i]);
+				for (var i = element.childNodes.length; i--;) elements.push(element.childNodes[i]);
 				break;
 			// Tag selector:
 			default:
 				temp = element.getElementsByTagName(tokens[0]);
-				for (var i = 0; i < temp.length; i++) elements.push(temp.item(i));
+				for (var i = temp.length; i--;) elements.push(temp.item(i));
 		}
 		
 		// If we still have tokens left, loop through every element
@@ -73,7 +73,7 @@ function comb(selector, fn){
 		if (tokens.length > 1){
 			tokens.shift();
 			total = elements.length;
-			while (total-- > 0)
+			while (total--)
 				// Must use slice to clone the array and pass it 'by value'
 				elements = elements.concat(innerComb(elements.shift(), tokens.slice(0))) 
 		}
@@ -86,12 +86,12 @@ function comb(selector, fn){
 	if (typeof selector == 'string')
 		elements = innerComb(document, selector.split('>'));
 	else if (selector instanceof Array)
-		for (var i = 0; i < selector.length; i++)
+		for (var i = selector.length; i--;)
 			elements = elements.concat(innerComb(document, selector[i].split('>')));
 
 	// Apply the function if there is any to each element, passing the element as an argument
 	if (fn)
-		for (var i = 0; i < elements.length; i++)
+		for (var i = elements.length; i--;)
 			fn(elements[i]);
 
 	return elements;
